@@ -2,6 +2,8 @@
 
 Canonical schemas and field contracts for Carapace risk telemetry.
 
+Support Carapace on Patreon: <https://www.patreon.com/carapacehq>
+
 ## Scope
 
 This repo owns the shared event model for the first Carapace slice:
@@ -35,4 +37,3 @@ This repo is documentation-first today. Schema artifacts and validation tooling 
 ## License
 
 Apache-2.0
-
