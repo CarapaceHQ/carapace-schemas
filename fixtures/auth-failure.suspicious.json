@@ -1,0 +1,19 @@
+{
+  "type": "auth_failure",
+  "ts": "2026-03-24T12:01:00.000Z",
+  "schemaVersion": "0.1.0",
+  "environment": "development",
+  "service": "carapace-playground",
+  "actor": {
+    "ip": "198.51.100.44",
+    "userAgent": "curl/8.5.0",
+    "method": "GET",
+    "path": "/v1/admin"
+  },
+  "response": {
+    "statusCode": 401
+  },
+  "tags": [
+    "auth"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.carapacehq.dev/velocity-burst.schema.json",
+  "title": "Carapace Velocity Burst Event",
+  "allOf": [
+    {
+      "$ref": "./base-event.schema.json"
+    },
+    {
+      "type": "object",
+      "required": [
+        "type",
+        "metrics"
+      ],
+      "properties": {
+        "type": {
+          "const": "velocity_burst"
+        },
+        "metrics": {
+          "type": "object",
+          "properties": {
+            "hitCount": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "windowMs": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "hitCount",
+            "windowMs"
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "contains": {
+            "const": "velocity"
+          }
+        }
+      }
+    }
+  ]
+}

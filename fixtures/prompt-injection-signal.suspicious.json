@@ -1,0 +1,19 @@
+{
+  "type": "prompt_injection_signal",
+  "ts": "2026-03-24T12:03:00.000Z",
+  "schemaVersion": "0.1.0",
+  "environment": "development",
+  "service": "carapace-playground",
+  "actor": {
+    "ip": "203.0.113.77",
+    "userAgent": "carapace-test",
+    "method": "POST",
+    "path": "/v1/chat"
+  },
+  "signal": {
+    "matchedPattern": "ignore\\s+previous\\s+instructions"
+  },
+  "tags": [
+    "prompt_injection"
+  ]
+}

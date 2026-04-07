@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.carapacehq.dev/api-request.schema.json",
+  "title": "Carapace API Request Event",
+  "allOf": [
+    {
+      "$ref": "./base-event.schema.json"
+    },
+    {
+      "type": "object",
+      "required": [
+        "type",
+        "request"
+      ],
+      "properties": {
+        "type": {
+          "const": "api_request"
+        },
+        "request": {
+          "type": "object",
+          "properties": {
+            "method": {
+              "type": "string",
+              "minLength": 1
+            },
+            "path": {
+              "type": "string",
+              "pattern": "^/"
+            },
+            "userAgent": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "method",
+            "path",
+            "userAgent"
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "maxItems": 0
+        }
+      }
+    }
+  ]
+}

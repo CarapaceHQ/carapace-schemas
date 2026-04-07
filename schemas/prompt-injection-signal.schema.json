@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.carapacehq.dev/prompt-injection-signal.schema.json",
+  "title": "Carapace Prompt Injection Signal Event",
+  "allOf": [
+    {
+      "$ref": "./base-event.schema.json"
+    },
+    {
+      "type": "object",
+      "required": [
+        "type",
+        "signal"
+      ],
+      "properties": {
+        "type": {
+          "const": "prompt_injection_signal"
+        },
+        "signal": {
+          "type": "object",
+          "properties": {
+            "matchedPattern": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "matchedPattern"
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "contains": {
+            "const": "prompt_injection"
+          }
+        }
+      }
+    }
+  ]
+}

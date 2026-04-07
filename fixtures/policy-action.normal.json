@@ -1,0 +1,22 @@
+{
+  "type": "policy_action",
+  "ts": "2026-03-24T12:05:00.000Z",
+  "schemaVersion": "0.1.0",
+  "environment": "development",
+  "service": "carapace-playground",
+  "actor": {
+    "ip": "203.0.113.10",
+    "userAgent": "carapace-test",
+    "method": "POST",
+    "path": "/v1/chat"
+  },
+  "policy": {
+    "action": "allow",
+    "flags": [],
+    "score": 5,
+    "reasons": []
+  },
+  "tags": [
+    "policy"
+  ]
+}

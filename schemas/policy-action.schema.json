@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.carapacehq.dev/policy-action.schema.json",
+  "title": "Carapace Policy Action Event",
+  "allOf": [
+    {
+      "$ref": "./base-event.schema.json"
+    },
+    {
+      "type": "object",
+      "required": [
+        "type",
+        "policy"
+      ],
+      "properties": {
+        "type": {
+          "const": "policy_action"
+        },
+        "policy": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "allow",
+                "log",
+                "rate_limit",
+                "block"
+              ]
+            },
+            "flags": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "score": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "reasons": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "action",
+            "score",
+            "reasons"
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "contains": {
+            "const": "policy"
+          }
+        }
+      }
+    }
+  ]
+}

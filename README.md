@@ -15,6 +15,34 @@ This repo owns the shared event model for the first Carapace slice:
 
 The first local-first Carapace loop depends on this repo landing before the middleware and rule-pack repos diverge.
 
+## Current Contract
+
+The first shipped schema package now defines:
+
+- a shared base event envelope
+- event schemas for:
+  - `api_request`
+  - `auth_failure`
+  - `velocity_burst`
+  - `prompt_injection_signal`
+  - `tool_abuse_signal`
+  - `policy_action`
+- example fixtures for normal and suspicious cases
+- a fixture validation script using JSON Schema
+
+The contract is aligned to the current `@carapacehq/express` event shape so downstream repos can adopt it without waiting on a second redesign pass.
+
+## Layout
+
+- `schemas/`
+  JSON Schema artifacts for the base envelope and first event types.
+- `fixtures/`
+  Example payloads that should remain valid as the package evolves.
+- `src/`
+  Package exports for downstream imports.
+- `scripts/validate-fixtures.js`
+  Local validation pass for all shipped fixtures.
+
 ## Seed Material
 
 The initial source material comes from the earlier `ai-trust-layer` planning docs and is now being normalized into the Carapace ecosystem.
@@ -26,13 +54,19 @@ Current seed docs:
 
 ## Near-Term Milestones
 
-1. Normalize the first event envelope for `api_request`, `auth_failure`, `velocity_burst`, `prompt_injection_signal`, `tool_abuse_signal`, and `policy_action`.
-2. Add JSON Schema artifacts under `schemas/`.
-3. Add fixtures and compatibility checks that downstream repos can consume.
+1. Wire `@carapacehq/express` event factories directly to these schemas.
+2. Freeze the first stable package version and publish compatibility guidance.
+3. Add downstream compatibility checks for `carapace-playground` and the starter rule pack.
 
 ## Development
 
-This repo is documentation-first today. Schema artifacts and validation tooling will be added as the first Carapace build slice moves from planning into implementation.
+```bash
+npm install
+npm test
+npm run validate:fixtures
+```
+
+The schemas use JSON Schema draft 2020-12 and are designed for local-first validation in downstream repos.
 
 ## License
 

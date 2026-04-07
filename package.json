@@ -1,0 +1,29 @@
+{
+  "name": "@carapacehq/schemas",
+  "version": "0.1.0",
+  "description": "Canonical JSON Schemas and fixtures for Carapace telemetry events.",
+  "type": "module",
+  "files": [
+    "schemas",
+    "fixtures",
+    "src"
+  ],
+  "exports": {
+    ".": "./src/index.js",
+    "./schemas/base-event": "./schemas/base-event.schema.json",
+    "./schemas/api-request": "./schemas/api-request.schema.json",
+    "./schemas/auth-failure": "./schemas/auth-failure.schema.json",
+    "./schemas/velocity-burst": "./schemas/velocity-burst.schema.json",
+    "./schemas/prompt-injection-signal": "./schemas/prompt-injection-signal.schema.json",
+    "./schemas/tool-abuse-signal": "./schemas/tool-abuse-signal.schema.json",
+    "./schemas/policy-action": "./schemas/policy-action.schema.json"
+  },
+  "scripts": {
+    "test": "node --test",
+    "validate:fixtures": "node ./scripts/validate-fixtures.js"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  }
+}

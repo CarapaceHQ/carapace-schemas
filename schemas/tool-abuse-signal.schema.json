@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.carapacehq.dev/tool-abuse-signal.schema.json",
+  "title": "Carapace Tool Abuse Signal Event",
+  "allOf": [
+    {
+      "$ref": "./base-event.schema.json"
+    },
+    {
+      "type": "object",
+      "required": [
+        "type",
+        "signal"
+      ],
+      "properties": {
+        "type": {
+          "const": "tool_abuse_signal"
+        },
+        "signal": {
+          "type": "object",
+          "properties": {
+            "toolName": {
+              "type": "string",
+              "minLength": 1
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "toolName",
+            "reason"
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "contains": {
+            "const": "tool_abuse"
+          }
+        }
+      }
+    }
+  ]
+}

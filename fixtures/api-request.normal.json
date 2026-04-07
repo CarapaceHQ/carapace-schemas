@@ -1,0 +1,20 @@
+{
+  "type": "api_request",
+  "ts": "2026-03-24T12:00:00.000Z",
+  "schemaVersion": "0.1.0",
+  "environment": "development",
+  "service": "carapace-playground",
+  "actor": {
+    "ip": "203.0.113.10",
+    "userAgent": "carapace-test",
+    "method": "POST",
+    "path": "/v1/chat"
+  },
+  "request": {
+    "method": "POST",
+    "path": "/v1/chat",
+    "userAgent": "carapace-test",
+    "requestId": "req_demo_001"
+  },
+  "tags": []
+}

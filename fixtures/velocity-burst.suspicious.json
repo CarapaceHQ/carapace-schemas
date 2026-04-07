@@ -1,0 +1,20 @@
+{
+  "type": "velocity_burst",
+  "ts": "2026-03-24T12:02:00.000Z",
+  "schemaVersion": "0.1.0",
+  "environment": "development",
+  "service": "carapace-playground",
+  "actor": {
+    "ip": "198.51.100.5",
+    "userAgent": "carapace-load-test",
+    "method": "GET",
+    "path": "/v1/search"
+  },
+  "metrics": {
+    "hitCount": 6,
+    "windowMs": 60000
+  },
+  "tags": [
+    "velocity"
+  ]
+}

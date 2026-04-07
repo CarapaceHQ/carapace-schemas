@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.carapacehq.dev/auth-failure.schema.json",
+  "title": "Carapace Authentication Failure Event",
+  "allOf": [
+    {
+      "$ref": "./base-event.schema.json"
+    },
+    {
+      "type": "object",
+      "required": [
+        "type",
+        "response"
+      ],
+      "properties": {
+        "type": {
+          "const": "auth_failure"
+        },
+        "response": {
+          "type": "object",
+          "properties": {
+            "statusCode": {
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 599
+            }
+          },
+          "required": [
+            "statusCode"
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "contains": {
+            "const": "auth"
+          }
+        }
+      }
+    }
+  ]
+}
