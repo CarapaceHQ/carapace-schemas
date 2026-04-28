@@ -32,6 +32,21 @@ The first shipped schema package now defines:
 
 The contract is aligned to the current `@carapacehq/express` event shape so downstream repos can adopt it without waiting on a second redesign pass.
 
+## Package Usage
+
+Install the schema package:
+
+```bash
+npm install @carapacehq/schemas
+```
+
+Import the schema set or a specific exported schema:
+
+```js
+import { apiRequestSchema, policyActionSchema } from "@carapacehq/schemas";
+import baseEventSchema from "@carapacehq/schemas/schemas/base-event" with { type: "json" };
+```
+
 ## Layout
 
 - `schemas/`
@@ -64,6 +79,7 @@ Current seed docs:
 npm install
 npm test
 npm run validate:fixtures
+npm pack --dry-run
 ```
 
 The schemas use JSON Schema draft 2020-12 and are designed for local-first validation in downstream repos.

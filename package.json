@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Canonical JSON Schemas and fixtures for Carapace telemetry events.",
   "type": "module",
+  "license": "Apache-2.0",
   "files": [
     "schemas",
     "fixtures",
@@ -18,6 +19,14 @@
     "./schemas/tool-abuse-signal": "./schemas/tool-abuse-signal.schema.json",
     "./schemas/policy-action": "./schemas/policy-action.schema.json"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarapaceHQ/carapace-schemas.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CarapaceHQ/carapace-schemas/issues"
+  },
+  "homepage": "https://github.com/CarapaceHQ/carapace-schemas#readme",
   "scripts": {
     "test": "node --test",
     "validate:fixtures": "node ./scripts/validate-fixtures.js"
