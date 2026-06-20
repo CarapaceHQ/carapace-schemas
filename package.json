@@ -17,7 +17,8 @@
     "./schemas/velocity-burst": "./schemas/velocity-burst.schema.json",
     "./schemas/prompt-injection-signal": "./schemas/prompt-injection-signal.schema.json",
     "./schemas/tool-abuse-signal": "./schemas/tool-abuse-signal.schema.json",
-    "./schemas/policy-action": "./schemas/policy-action.schema.json"
+    "./schemas/policy-action": "./schemas/policy-action.schema.json",
+    "./schemas/agent-action-receipt": "./schemas/agent-action-receipt.schema.json"
   },
   "repository": {
     "type": "git",

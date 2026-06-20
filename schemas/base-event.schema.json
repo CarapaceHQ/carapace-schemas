@@ -18,7 +18,8 @@
         "velocity_burst",
         "prompt_injection_signal",
         "tool_abuse_signal",
-        "policy_action"
+        "policy_action",
+        "agent_action_receipt"
       ]
     },
     "ts": {

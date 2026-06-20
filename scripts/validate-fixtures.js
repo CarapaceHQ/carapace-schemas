@@ -17,6 +17,7 @@ const schemaFileByType = {
   prompt_injection_signal: "prompt-injection-signal.schema.json",
   tool_abuse_signal: "tool-abuse-signal.schema.json",
   policy_action: "policy-action.schema.json",
+  agent_action_receipt: "agent-action-receipt.schema.json",
 };
 
 async function readJson(filePath) {

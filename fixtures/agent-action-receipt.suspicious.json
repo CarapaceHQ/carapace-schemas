@@ -1,0 +1,68 @@
+{
+  "type": "agent_action_receipt",
+  "receiptId": "receipt_demo_suspicious_001",
+  "ts": "2026-03-24T12:06:00.000Z",
+  "schemaVersion": "0.1.0",
+  "environment": "development",
+  "service": "carapace-playground",
+  "actor": {
+    "ip": "203.0.113.77",
+    "userAgent": "carapace-test",
+    "method": "POST",
+    "path": "/v1/chat"
+  },
+  "action": {
+    "kind": "api_request",
+    "target": {
+      "type": "http_route",
+      "name": "POST /v1/chat",
+      "method": "POST",
+      "path": "/v1/chat"
+    },
+    "summary": "POST /v1/chat"
+  },
+  "observedEvents": [
+    {
+      "type": "api_request",
+      "ts": "2026-03-24T12:05:58.000Z"
+    },
+    {
+      "type": "prompt_injection_signal",
+      "ts": "2026-03-24T12:05:58.000Z"
+    },
+    {
+      "type": "policy_action",
+      "ts": "2026-03-24T12:06:00.000Z"
+    }
+  ],
+  "ruleHits": [
+    {
+      "ruleId": "carapace.prompt-injection-hit",
+      "title": "Known prompt injection pattern hit",
+      "severity": "high",
+      "eventType": "prompt_injection_signal",
+      "flags": [
+        "prompt_injection"
+      ],
+      "scoreContribution": 80,
+      "suggestedAction": "block"
+    }
+  ],
+  "risk": {
+    "score": 80,
+    "flags": [
+      "prompt_injection"
+    ],
+    "reasons": [
+      "carapace.prompt-injection-hit"
+    ]
+  },
+  "policy": {
+    "action": "block",
+    "applied": true
+  },
+  "tags": [
+    "receipt",
+    "agent_action"
+  ]
+}

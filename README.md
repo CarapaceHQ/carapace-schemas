@@ -9,6 +9,7 @@ Support Carapace on Patreon: <https://www.patreon.com/carapacehq>
 This repo owns the shared event model for the first Carapace slice:
 
 - request and policy event envelopes
+- agent action receipt contracts
 - field naming and normalization guidance
 - starter telemetry vocabulary
 - fixtures and validation contracts over time
@@ -27,6 +28,7 @@ The first shipped schema package now defines:
   - `prompt_injection_signal`
   - `tool_abuse_signal`
   - `policy_action`
+- an `agent_action_receipt` schema for durable action evidence
 - example fixtures for normal and suspicious cases
 - a fixture validation script using JSON Schema
 
@@ -43,7 +45,11 @@ npm install @carapacehq/schemas
 Import the schema set or a specific exported schema:
 
 ```js
-import { apiRequestSchema, policyActionSchema } from "@carapacehq/schemas";
+import {
+  agentActionReceiptSchema,
+  apiRequestSchema,
+  policyActionSchema,
+} from "@carapacehq/schemas";
 import baseEventSchema from "@carapacehq/schemas/schemas/base-event" with { type: "json" };
 ```
 
@@ -58,20 +64,23 @@ import baseEventSchema from "@carapacehq/schemas/schemas/base-event" with { type
 - `scripts/validate-fixtures.js`
   Local validation pass for all shipped fixtures.
 
-## Seed Material
+## Source Material
 
-The initial source material comes from the earlier `ai-trust-layer` planning docs and is now being normalized into the Carapace ecosystem.
+The initial source material came from earlier `ai-trust-layer` planning docs and has been narrowed into the current Carapace schema package.
 
-Current seed docs:
+Current reference docs:
 
 - `docs/Human-AI-Risk-Event-Schema.md`
 - `docs/Behavior-Telemetry-Taxonomy.md`
 
-## Near-Term Milestones
+## Release Candidate Checks
 
-1. Wire `@carapacehq/express` event factories directly to these schemas.
-2. Freeze the first stable package version and publish compatibility guidance.
-3. Add downstream compatibility checks for `carapace-playground` and the starter rule pack.
+Before publishing:
+
+1. Keep fixture validation green.
+2. Confirm downstream middleware events still match the shipped schemas.
+3. Run `npm pack --dry-run` and inspect the included schemas, fixtures, README, LICENSE, and package metadata.
+4. Include this package in the packed-tarball smoke test from the steering release sequence.
 
 ## Development
 

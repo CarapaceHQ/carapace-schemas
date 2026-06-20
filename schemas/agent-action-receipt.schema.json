@@ -1,0 +1,272 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.carapacehq.dev/agent-action-receipt.schema.json",
+  "title": "Carapace Agent Action Receipt",
+  "type": "object",
+  "required": [
+    "type",
+    "receiptId",
+    "ts",
+    "actor",
+    "action",
+    "observedEvents",
+    "ruleHits",
+    "risk",
+    "policy",
+    "tags"
+  ],
+  "properties": {
+    "type": {
+      "const": "agent_action_receipt"
+    },
+    "receiptId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ts": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "environment": {
+      "type": "string",
+      "enum": [
+        "production",
+        "staging",
+        "development",
+        "test"
+      ]
+    },
+    "service": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actor": {
+      "type": "object",
+      "required": [
+        "ip",
+        "userAgent",
+        "method",
+        "path"
+      ],
+      "properties": {
+        "ip": {
+          "type": "string",
+          "minLength": 1
+        },
+        "userAgent": {
+          "type": "string",
+          "minLength": 1
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^/"
+        },
+        "agentId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "organizationId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "action": {
+      "type": "object",
+      "required": [
+        "kind",
+        "target",
+        "summary"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "api_request",
+            "tool_call"
+          ]
+        },
+        "target": {
+          "type": "object",
+          "required": [
+            "type",
+            "name"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "http_route",
+                "tool"
+              ]
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "method": {
+              "type": "string",
+              "minLength": 1
+            },
+            "path": {
+              "type": "string",
+              "pattern": "^/"
+            }
+          },
+          "additionalProperties": false
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "observedEvents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "ts"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ts": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "ruleHits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "ruleId",
+          "flags",
+          "scoreContribution",
+          "suggestedAction"
+        ],
+        "properties": {
+          "ruleId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "severity": {
+            "type": "string",
+            "minLength": 1
+          },
+          "eventType": {
+            "type": "string",
+            "minLength": 1
+          },
+          "flags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "scoreContribution": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "suggestedAction": {
+            "type": "string",
+            "enum": [
+              "allow",
+              "log",
+              "rate_limit",
+              "block"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "risk": {
+      "type": "object",
+      "required": [
+        "score",
+        "flags",
+        "reasons"
+      ],
+      "properties": {
+        "score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "policy": {
+      "type": "object",
+      "required": [
+        "action",
+        "applied"
+      ],
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "allow",
+            "log",
+            "rate_limit",
+            "block"
+          ]
+        },
+        "applied": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tags": {
+      "type": "array",
+      "contains": {
+        "const": "receipt"
+      },
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "additionalProperties": false
+}

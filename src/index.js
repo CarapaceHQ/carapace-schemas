@@ -5,3 +5,4 @@ export { default as velocityBurstSchema } from "../schemas/velocity-burst.schema
 export { default as promptInjectionSignalSchema } from "../schemas/prompt-injection-signal.schema.json" with { type: "json" };
 export { default as toolAbuseSignalSchema } from "../schemas/tool-abuse-signal.schema.json" with { type: "json" };
 export { default as policyActionSchema } from "../schemas/policy-action.schema.json" with { type: "json" };
+export { default as agentActionReceiptSchema } from "../schemas/agent-action-receipt.schema.json" with { type: "json" };

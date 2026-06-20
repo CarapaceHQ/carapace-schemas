@@ -11,6 +11,7 @@ Current artifacts:
 - `prompt-injection-signal.schema.json`
 - `tool-abuse-signal.schema.json`
 - `policy-action.schema.json`
+- `agent-action-receipt.schema.json`
 
 The base envelope requires:
 
